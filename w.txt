@@ -1,0 +1,30 @@
+1.  READ 0            ; wczytaj N (ilość liczb) do komórki 0
+2.  READ 3            ; wczytaj pierwszą liczbę do X (adres 3)
+3.  LOAD 3            ; załaduj X do rejestru
+4.  STORE 2           ; zapisz do MAX (adres 2)
+5.  LOAD 1            ; załaduj i (adres 1)
+6.  ADD 4             ; dodaj 1 (adres 4 - stała 1)
+7.  STORE 1           ; zapisz i = 1
+8.  LOAD 1            ; załaduj i
+9.  SUB 0             ; i - N
+10. JGT END           ; jeśli i > N, skocz do END
+
+LOOP:
+11. READ 3            ; wczytaj kolejną liczbę do X
+12. LOAD 3            ; załaduj X
+13. SUB 2             ; X - MAX
+14. JLE SKIP          ; jeśli X <= MAX, pomiń aktualizację MAX
+15. LOAD 3            ; załaduj X
+16. STORE 2           ; zapisz do MAX
+SKIP:
+17. LOAD 1            ; załaduj i
+18. ADD 4             ; i = i + 1
+19. STORE 1           ; zapisz i
+20. LOAD 1            ; załaduj i
+21. SUB 0             ; i - N
+22. JLE LOOP          ; jeśli i <= N, powtarzaj pętlę
+
+END:
+23. LOAD 2            ; załaduj MAX
+24. WRITE 2           ; wypisz MAX
+25. HALT              ; zakończ program
